@@ -1,4 +1,4 @@
-<?php include __DIR__ . "/elements/header.php" ?>
+<?php  include __DIR__ . "/elements/header.php" ?>
 
 <main role="main">
 
@@ -27,11 +27,11 @@
     
   </div> <!-- /container -->
 
-  <div class="container-sm">      
+  <!-- <div class="container-sm">      
       <div>
-        Datum: <?php echo $course['date']; echo $course['currency'].": "; echo $course['rate'] ?>
+        Datum: <?php //echo $course['date']; echo $course['currency'].": "; echo $course['rate'] ?>
       </div>
-  </div>
+  </div> -->
 
 </main>
 

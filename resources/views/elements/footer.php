@@ -10,7 +10,7 @@
   $(document).ready(func);
   
   function func() {
-    for (let i = 1; i < <?php echo count($comments)+1?>; i++) {   
+    for (let i = 1; i < <?php 0//echo count($comments)+1?>; i++) {   
       $("#kr-view-button"+i).css("display", "none");
       
       $("#list-group-item"+i).hover(function(){

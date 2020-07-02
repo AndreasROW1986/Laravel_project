@@ -2,39 +2,38 @@
 
 namespace App\Http\Controllers;
 
-
+use Illuminate\Support\Facades\DB;
+use App\DBContainer\BlogDB as BlogDB;
+use App\DBContainer\Fixer as Fixer;
 
 class PostController extends Controller
 {
-    /*protected $dbContainer;
+    protected $dbContainer;
     protected $fixerController;
     
-    public function __construct($container, $fixerController)
+    public function __construct(BlogDB $container, Fixer $fixerController)
     {
         $this->dbContainer = $container;
         $this->fixerController = $fixerController;
-    }*/
+    }
     
     public function index()
     {
         $defCrn = 'USD';
         
-        //$artikeln = $this->dbContainer->getTopArtikels('artikels');
-        $artikeln = [];
+        $artikeln = $this->dbContainer->getTopArtikels();
+        
+        //$artikeln = DB::select('SELECT * FROM artikels LIMIT 3');        
 
         // show course on the site
         //$course = $this->fixerController->getCourse($defCrn);
         $course = [];
         
-        view('index', [
+        return view('index', [
             'artikeln' => $artikeln, 
             'course' => $course
             ]);
         
-        /*$this->render('index', [
-            'artikeln' => $artikeln, 
-            'course' => $course
-            ]);*/
     }
 
     public function showPost()
@@ -79,5 +78,3 @@ class PostController extends Controller
         $this->render('index', ['artikeln' => $artikeln]);
     }
 }
-
-?>
