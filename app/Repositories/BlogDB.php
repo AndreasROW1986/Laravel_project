@@ -1,6 +1,6 @@
 <?php
 
-namespace App\DBContainer;
+namespace App\Repositories;
 
 use Illuminate\Support\Facades\DB;
 

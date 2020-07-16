@@ -3,27 +3,28 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\DB;
-use App\DBContainer\BlogDB as BlogDB;
-use App\DBContainer\Fixer as Fixer;
+use App\Repositories\BlogDB as BlogDB;
+use App\Repositories\Fixer as Fixer;
 
 class PostController extends Controller
 {
     protected $dbContainer;
     protected $fixerController;
     
-    public function __construct(BlogDB $container, Fixer $fixerController)
+    public function __construct()//BlogDB $container, Fixer $fixerController)
     {
-        $this->dbContainer = $container;
-        $this->fixerController = $fixerController;
+        //$this->dbContainer = $container;
+        //$this->fixerController = $fixerController;
     }
     
     public function index()
     {
         $defCrn = 'USD';
         
-        $artikeln = $this->dbContainer->getTopArtikels();
+        //$artikeln = $this->dbContainer->getTopArtikels();
         
-        //$artikeln = DB::select('SELECT * FROM artikels LIMIT 3');        
+        $DB = new BlogDB();
+        $artikeln = $DB->getTopArtikels();
 
         // show course on the site
         //$course = $this->fixerController->getCourse($defCrn);

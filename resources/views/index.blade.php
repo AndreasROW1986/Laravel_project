@@ -1,4 +1,4 @@
-<?php  include __DIR__ . "/elements/header.php" ?>
+@include('elements.header') 
 
 <main role="main">
 
@@ -16,13 +16,14 @@
 
   <div class="container">
     <div class="row">
-      <?php foreach ($artikeln as $artikel): ?>
-      <div class="col-md-4">
-        <h2><?php echo $artikel->autor ?></h2>
-        <p><?php echo $artikel->heading ?></p>
+      @foreach ($artikeln as $artikel)
+      <div class="col-md-4">        
+        <h2> {{$artikel->autor}} </h2>
+        <p> {{$artikel->heading}} </p> 
         <p><a class="btn btn-secondary" href="post?id=<?php echo $artikel->id?>" role="button">Mehr lesen &raquo;</a></p>
       </div>
-      <?php endforeach; ?>
+      
+      @endforeach
     </div>
     
   </div> <!-- /container -->
@@ -35,4 +36,6 @@
 
 </main>
 
-<?php include __DIR__ . "/elements/footer.php" ?>
+<footer>
+  @include('elements.footer') 
+</footer>
