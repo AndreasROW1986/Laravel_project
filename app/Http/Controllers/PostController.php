@@ -11,9 +11,9 @@ class PostController extends Controller
     protected $dbContainer;
     protected $fixerController;
     
-    public function __construct()//BlogDB $container, Fixer $fixerController)
+    public function __construct(BlogDB $container)//BlogDB $container, Fixer $fixerController)
     {
-        //$this->dbContainer = $container;
+        $this->dbContainer = $container;
         //$this->fixerController = $fixerController;
     }
     
@@ -21,10 +21,7 @@ class PostController extends Controller
     {
         $defCrn = 'USD';
         
-        //$artikeln = $this->dbContainer->getTopArtikels();
-        
-        $DB = new BlogDB();
-        $artikeln = $DB->getTopArtikels();
+        $artikeln = $this->dbContainer->getTopArtikels();
 
         // show course on the site
         //$course = $this->fixerController->getCourse($defCrn);
@@ -37,6 +34,13 @@ class PostController extends Controller
         
     }
 
+    /**
+     * show the post seit
+     * 
+     * @param ind $PostID
+     * 
+     */
+    
     public function showPost()
     {   
         $PostID = intval($_GET['id']);
@@ -65,7 +69,7 @@ class PostController extends Controller
         $post = $this->dbContainer->getPost('artikels', $PostID);
         $comments = $this->dbContainer->commentsByPost($PostID);        
         
-        $this->render('post', [
+        return view('post', [
             'post' => $post, 
             'comments' => $comments,
             'commentEdit' => $comment
@@ -75,7 +79,7 @@ class PostController extends Controller
     public function showAllPosts()
     {
         $artikeln = $this->dbContainer->getAll('artikels');
-
-        $this->render('index', ['artikeln' => $artikeln]);
+        
+        return view('index', ['artikeln' => $artikeln]);
     }
 }

@@ -18,3 +18,7 @@ Route::get('/', function () {
 });
 
 Route::get('/index', 'PostController@index');
+
+Route::get('/artikels', 'PostController@showAllPosts');
+
+Route::get('/post', 'PostController@showPost'); 

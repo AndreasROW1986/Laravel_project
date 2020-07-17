@@ -20,9 +20,8 @@
       <div class="col-md-4">        
         <h2> {{$artikel->autor}} </h2>
         <p> {{$artikel->heading}} </p> 
-        <p><a class="btn btn-secondary" href="post?id=<?php echo $artikel->id?>" role="button">Mehr lesen &raquo;</a></p>
-      </div>
-      
+        <p><a class="btn btn-secondary" href="post?id={{$artikel->id}}" role="button">Mehr lesen &raquo;</a></p>
+      </div>      
       @endforeach
     </div>
     
