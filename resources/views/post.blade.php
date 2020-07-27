@@ -22,24 +22,25 @@
               <p>{{$comment->content}}</p>
               <div id="kr-view-button{{$comment->id}}">
                 <form method="post" action="post?id={{$post->id}}">
+                  @csrf
                   <button type="submit" name="edit" value="{{$comment->id}} "class="btn btn-outline-dark">Korrigieren</button>
                 </form>
               </div>              
             </div>
           @endforeach
-        </div>  
-
-        <form class="form-group" method="post" action="post?id={{$post->id}}"> 
+        </div>          
+        <form class="form-group" method="POST" action="post?id={{$post->id}}">        
+        @csrf
           <div class="form-group">
             <textarea class="form-control" name="comment">
               {{$commentEdit}} 
             </textarea>
-          </div>
+          </div>          
           <button type="submit" class="btn btn-primary">
           @if (@empty($commentEdit)) 
-            echo "Hinzufügen";
+            Hinzufügen
           @else
-            echo "Korrigieren";                    
+            Korrigieren
           @endif  
           </button>
         </form>

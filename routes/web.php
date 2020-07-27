@@ -17,8 +17,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/index', 'PostController@index');
+Route::get('index', 'PostController@index');
 
-Route::get('/artikels', 'PostController@showAllPosts');
+Route::get('artikels', 'PostController@showAllPosts');
 
-Route::get('/post', 'PostController@showPost'); 
+Route::match(['get', 'post'], 'post', 'PostController@showPost');
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

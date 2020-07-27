@@ -30,12 +30,15 @@ class BlogDB extends StructDB
 
     public function insertComment($id, $comment)
     {
-        $query = "INSERT INTO `$this->tabelComments` (`post_id`, `content`) VALUES (:post_id, :comment)";
+        DB::insert("INSERT INTO `$this->tabelComments` (`post_id`, `content`) VALUES (?, '?'", 
+            [$id, $comment]);
+        
+        /* $query = "INSERT INTO `$this->tabelComments` (`post_id`, `content`) VALUES (:post_id, :comment)";
         $sth = $this->db->prepare($query);        
         $sth->execute([
             ':post_id' => $id, 
             ':comment' => $comment
-            ]);
+            ]); */
     }
 
     public function commentsByPost($postID)
@@ -45,18 +48,19 @@ class BlogDB extends StructDB
 
     public function commentByID($commentID)
     {
-        $result = DB::table($this->tabelComments)->where('id', $commentID);
+        $result = DB::table($this->tabelComments)->where('id', $commentID)->get();
         
-        return $result == false ? "": $result->content;
+        return $result == false ? "": $result->first()->content;
     }        
 
     public function updateComment($id, $comment)
     {
-        $query = "UPDATE `$this->tabelComments` SET `content` = :content WHERE id = :id";
+      DB::update("UPDATE `$this->tabelComments` SET `content` = ? WHERE id = ?", [$comment, $id]);
+        /*   $query = "UPDATE `$this->tabelComments` SET `content` = :content WHERE id = :id";
         $sth = $this->db->prepare($query);        
         $sth->execute([
             ':content' => $comment, 
             ':id' => $id
-            ]);     
+            ]);   */   
     } 
 }

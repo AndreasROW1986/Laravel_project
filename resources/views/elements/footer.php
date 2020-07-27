@@ -3,14 +3,13 @@
     <span class="text-muted">Company 2017-2020</span>
   </div>
 </footer>
-
 <!-- ************* JAVA SCRIPT ************ -->
 
-<script>
+<!-- <script>
   $(document).ready(func);
   
   function func() {
-    for (let i = 1; i < <?php 0//echo count($comments)+1?>; i++) {   
+    for (let i = 1; i < {{count($comments+1)}} i++) {
       $("#kr-view-button"+i).css("display", "none");
       
       $("#list-group-item"+i).hover(function(){
@@ -18,7 +17,6 @@
         }); 
     }
   }
-</script>
+</script> -->
 
 </html>
-

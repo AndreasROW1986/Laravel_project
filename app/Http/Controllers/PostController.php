@@ -56,7 +56,7 @@ class PostController extends Controller
             } else {
                 $comment = $_POST['comment'];
                 $this->dbContainer->insertComment($PostID, $comment);
-            }
+            }        
         }
         
         $comment = "";

@@ -1,7 +1,14 @@
 <!DOCTYPE html>
 <html>
+
+<head>
+  meta name="csrf-token" content="{{ csrf_token() }}">
+  <link href="{{mix('css/app.css')}}" rel="stylesheet" type="text/css">
+</head>
+
 <link href="https://getbootstrap.com/docs/4.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
 
 <!-- ************** BEGIN *************** -->
 
