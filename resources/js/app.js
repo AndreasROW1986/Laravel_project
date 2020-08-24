@@ -14,11 +14,16 @@ require('./bootstrap');
 
 //require('./components/Example');
 
-import React from 'react'
-import ReactDOM from 'react-dom'
+import React, {Component} from 'react';
+import ReactDOM from 'react-dom';
+import {
+    BrowserRouter as Router,
+    Route, 
+    Switch
+} from 'react-router-dom';
 import Header from './components/Header';
 
-class App extends Comment {
+/* class Home extends Component {
     render () {
         return (
             <div>
@@ -26,8 +31,29 @@ class App extends Comment {
             </div>
         )
     }
+} */
+
+function Artikeln() {
+        return (
+            <div>
+                Component Artikel
+            </div>
+    );
 }
 
-if (document.getElementById('root')) {
-    ReactDOM.render(<Header />, document.getElementById('root'));
+export default function App() {
+    return (
+        <Router>
+            <Switch>
+                <Route path="/index"> <Header /> </Route>
+                <Route path="/post"> <Artikeln /> </Route>
+                {/* <Route path="/post" component={Artikeln} /> */}
+            </Switch>    
+        </Router>
+    );
 }
+
+ReactDOM.render(
+    <App />,
+document.getElementById('root')
+);

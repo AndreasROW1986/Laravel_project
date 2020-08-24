@@ -27,9 +27,15 @@ class PostController extends Controller
         //$course = $this->fixerController->getCourse($defCrn);
         $course = [];
         
+        $array = '';
+        if (isset($_REQUEST['autor'])) {
+            $array = $_REQUEST['autor'];
+        }
+            
         return view('index', [
             'artikeln' => $artikeln, 
-            'course' => $course
+            'course' => $course,
+            'array' => $array
             ]);
         
     }
@@ -77,9 +83,17 @@ class PostController extends Controller
     }
 
     public function showAllPosts()
-    {
+    {   
         $artikeln = $this->dbContainer->getAll('artikels');
         
         return view('index', ['artikeln' => $artikeln]);
     }
+
+    public function filterArtikel()
+    {
+        $filter = ['test'];
+        
+        return view('index', ['filter' => $filter]);
+    }
+
 }

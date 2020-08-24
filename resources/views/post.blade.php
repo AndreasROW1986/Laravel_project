@@ -12,7 +12,7 @@
     <div class="row">
         <p>{{$post->artikel}}</p>
     </div>
-
+    
     <div class="row">
       <div class="col-md-6">
         <h5>Kommentare</h5>
@@ -46,9 +46,23 @@
         </form>
       </div>
     </div>
-
 </div>
+
+<script>
+  $(document).ready(func);
+  
+  function func() {
+    for (let i = 1; i < {{count($comments)+1}}; i++) {
+      $("#kr-view-button"+i).css("display", "none");
+      
+      $("#list-group-item"+i).hover(function(){
+        $("#kr-view-button"+i).slideToggle(200);          
+        }); 
+    }   
+  }
+</script>
 
 <footer>
   @include('elements.footer') 
 </footer>
+

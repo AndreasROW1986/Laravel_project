@@ -3,12 +3,35 @@
 
 <head>
   meta name="csrf-token" content="{{ csrf_token() }}">
-  <link href="{{mix('css/app.css')}}" rel="stylesheet" type="text/css">
+  <!-- <link href="{{asset('css/app.css')}}" rel="stylesheet" type="text/css"> -->
+  <script src="js/jquery.js"></script>
 </head>
 
-<link href="https://getbootstrap.com/docs/4.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<link href="https://getbootstrap.com/docs/4.5/dist/css/bootstrap.min.css" rel="stylesheet">
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
 
+
+<script>     
+      function showArtikelOnAutor(str) {
+        if (str.lenght == 0) {
+            document.getElementById("cl").innerHTML = "";
+            return;
+        }
+        else {
+            var xmlHttp = new XMLHttpRequest();
+            xmlHttp.onreadystatechange == function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    document.getElementById("cl").innerHTML = xmlHttp.responseText;
+                    }
+                }
+            xmlHttp.open("GET", "index?autor="+str, true);
+            xmlHttp.send();
+
+            $("#cl").innerHTML = str;
+            //document.getElementById("cl").innerHTML = $list;   
+      }
+  }
+</script>
 
 <!-- ************** BEGIN *************** -->
 
@@ -39,7 +62,7 @@
       </li> -->
     </ul>
     <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+      <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search" onkeyup="showArtikelOnAutor(this.value)">
       <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
     </form>
   </div>

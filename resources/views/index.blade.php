@@ -2,18 +2,18 @@
 
 <main role="main">
 
-  <div id="root"></div>
+  <!-- <div id="root"></div> -->
 
-  <!-- <div class="jumbotron">
+  <div class="jumbotron">
     <div class="container">
       <div class="row">
           <h3 class="display-4">Herzlich willkommen zu meinem Blog!</h3>
           <p>Da werden verschiedene Beiträge aus aller berümtesten Zeitungen zusammengestellt</p>
 
-      <!-- <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more &raquo;</a></p> 
+      <!-- <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more &raquo;</a></p> -->
       </div>
-    </div>
-  </div> -->
+    </div> 
+  </div>
 
   <div class="container">
     <div class="row">
@@ -34,9 +34,18 @@
       </div>
   </div> -->
 
+  <div id="cl">
+      {{$array}}
+  </div>
+
 </main>
 
-<script src="{{asset('js/app.js')}}"></script>
-<!-- <script src="js/app.js"></script> -->
+<!-- <script src="{{asset('js/app.js')}}"></script>
+<script src="js/app.js"></script> -->
+
+<!-- @section('script') -->
+  
+<!-- @endsection -->
 
 @include('elements.footer')
+

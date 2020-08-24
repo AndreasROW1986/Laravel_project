@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-//import { render } from 'sass';
 
 function Header() {
         return (
@@ -16,4 +15,3 @@ function Header() {
 }
 
 export default Header;
-
