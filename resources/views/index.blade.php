@@ -35,7 +35,7 @@
   </div> -->
 
   <div id="cl">
-      {{$array}}
+     
   </div>
 
 </main>
@@ -43,9 +43,7 @@
 <!-- <script src="{{asset('js/app.js')}}"></script>
 <script src="js/app.js"></script> -->
 
-<!-- @section('script') -->
-  
-<!-- @endsection -->
+
 
 @include('elements.footer')
 

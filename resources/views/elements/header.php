@@ -28,7 +28,7 @@
             xmlHttp.send();
 
             $("#cl").innerHTML = str;
-            //document.getElementById("cl").innerHTML = $list;   
+            document.getElementById("cl").innerHTML = str;   
       }
   }
 </script>
