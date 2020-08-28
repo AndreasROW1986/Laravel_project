@@ -55,7 +55,7 @@ class BlogDB extends StructDB
 
     public function updateComment($id, $comment)
     {
-      DB::update("UPDATE `$this->tabelComments` SET `content` = ? WHERE id = ?", [$comment, $id]);
+        DB::update("UPDATE `$this->tabelComments` SET `content` = ? WHERE id = ?", [$comment, $id]);
         /*   $query = "UPDATE `$this->tabelComments` SET `content` = :content WHERE id = :id";
         $sth = $this->db->prepare($query);        
         $sth->execute([
@@ -63,4 +63,9 @@ class BlogDB extends StructDB
             ':id' => $id
             ]);   */   
     } 
+
+    public function searchAutor($keyWord)
+    {
+        return DB::select("SELECT autor, id FROM `$this->tabelArtikels` WHERE autor LIKE ?", ["%$keyWord%"]);
+    }
 }

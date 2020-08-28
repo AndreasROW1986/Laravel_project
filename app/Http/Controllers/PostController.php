@@ -2,9 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Support\Facades\DB;
 use App\Repositories\BlogDB as BlogDB;
-use App\Repositories\Fixer as Fixer;
+//use App\Repositories\Fixer as Fixer;
 
 class PostController extends Controller
 {
@@ -26,16 +25,10 @@ class PostController extends Controller
         // show course on the site
         //$course = $this->fixerController->getCourse($defCrn);
         $course = [];
-        
-        $array = '';
-        if (isset($_REQUEST['autor'])) {
-            $array = $_REQUEST['autor'];
-        }
-            
+                    
         return view('index', [
             'artikeln' => $artikeln, 
-            'course' => $course,
-            'array' => $array
+            'course' => $course
             ]);
         
     }
@@ -46,7 +39,6 @@ class PostController extends Controller
      * @param ind $PostID
      * 
      */
-    
     public function showPost()
     {   
         $PostID = intval($_GET['id']);

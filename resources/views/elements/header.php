@@ -5,33 +5,35 @@
   meta name="csrf-token" content="{{ csrf_token() }}">
   <!-- <link href="{{asset('css/app.css')}}" rel="stylesheet" type="text/css"> -->
   <script src="js/jquery.js"></script>
-</head>
+
 
 <link href="https://getbootstrap.com/docs/4.5/dist/css/bootstrap.min.css" rel="stylesheet">
 <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
 
-
 <script>     
-      function showArtikelOnAutor(str) {
-        if (str.lenght == 0) {
-            document.getElementById("cl").innerHTML = "";
+    function showArtikelOnAutor(str) {
+        if (str.length == 0) {            
+            $(".dropdown-item").remove();
+            $(".dropdown-menu").hide();
             return;
         }
-        else {
-            var xmlHttp = new XMLHttpRequest();
-            xmlHttp.onreadystatechange == function() {
-                if (this.readyState == 4 && this.status == 200) {
-                    document.getElementById("cl").innerHTML = xmlHttp.responseText;
-                    }
+        else {           
+            $.ajax("ajax?autor="+str, {                  
+                success: function(result) {                     
+                    if (result.length > 0) {
+                      $(".dropdown-menu").empty();
+                      $(".dropdown-menu").show();
+                    }                    
+                    for (i = 0; i < result.length; i++) {                     
+                      $(".dropdown-menu").append("<a class='dropdown-item' href='#'>"+result[i]+"</a>");
+                    }  
                 }
-            xmlHttp.open("GET", "index?autor="+str, true);
-            xmlHttp.send();
-
-            $("#cl").innerHTML = str;
-            document.getElementById("cl").innerHTML = str;   
-      }
-  }
+            });  
+        }
+    }
 </script>
+
+</head>
 
 <!-- ************** BEGIN *************** -->
 
@@ -61,10 +63,13 @@
         </div>
       </li> -->
     </ul>
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search" onkeyup="showArtikelOnAutor(this.value)">
+    <form class="nav-item dropdown form-inline my-2 my-lg-0">
+      <input class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" type="search" placeholder="Search" aria-label="Search" oninput="showArtikelOnAutor(this.value)">
+      <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="display: none;">          
+        </div>            
       <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
     </form>
+    
   </div>
 </nav>
 
