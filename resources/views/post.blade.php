@@ -49,17 +49,19 @@
 </div>
 
 <script>
-  $(document).ready(func);
-  
-  function func() {
-    for (let i = 1; i < {{count($comments)+1}}; i++) {
-      $("#kr-view-button"+i).css("display", "none");
+  $(document).ready(function() {
+      var arrayCom = <?php echo json_encode($comments, JSON_PRETTY_PRINT);  ?>;
+    
+      arrayCom.forEach(myFunction)
+
+      function myFunction(value, index, array) {      
+          $("#kr-view-button"+value.id).css("display", "none");
       
-      $("#list-group-item"+i).hover(function(){
-        $("#kr-view-button"+i).slideToggle(200);          
-        }); 
-    }   
-  }
+          $("#list-group-item"+value.id).hover(function() {
+          $("#kr-view-button"+value.id).slideToggle(200);          
+          });
+      }
+  });
 </script>
 
 <footer>
