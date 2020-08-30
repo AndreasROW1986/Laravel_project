@@ -1,1 +1,1 @@
-Test application with Laravel and React
+Test application with Laravel
