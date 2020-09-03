@@ -28,10 +28,10 @@ class BlogDB extends StructDB
         return DB::select("SELECT * FROM `$this->tabelArtikels` LIMIT 3");
     }
 
-    public function insertComment($id, $comment)
+    public function insertComment($postID, $comment)
     {
         DB::insert("INSERT INTO `$this->tabelComments` (`post_id`, `content`) VALUES (?, '?'", 
-            [$id, $comment]);
+            [$postID, $comment]);
         
         /* $query = "INSERT INTO `$this->tabelComments` (`post_id`, `content`) VALUES (:post_id, :comment)";
         $sth = $this->db->prepare($query);        

@@ -23,8 +23,16 @@ Route::get('artikels', 'PostController@showAllPosts');
 
 Route::match(['get', 'post'], 'post', 'PostController@showPost');
 
-Route::get('ajax', 'AjaxController@search');
-
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+/* 
+|--------------------------------------------------------------------------
+| AJAX Routes
+|--------------------------------------------------------------------------
+*/
+
+Route::get('ajax', 'AjaxController@search');
+
+Route::post('ajax_edit_comment', 'AjaxController@editComment');

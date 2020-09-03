@@ -8,9 +8,16 @@ use App\Repositories\BlogDB as BlogDB;
 class PostController extends Controller
 {
     protected $dbContainer;
-    protected $fixerController;
+    //protected $fixerController;
     
-    public function __construct(BlogDB $container)//BlogDB $container, Fixer $fixerController)
+    /**
+     * show the post seit
+     * 
+     * @param closure $container
+     * 
+     */
+    
+    public function __construct(BlogDB $container) //Fixer $fixerController)
     {
         $this->dbContainer = $container;
         //$this->fixerController = $fixerController;
@@ -33,44 +40,16 @@ class PostController extends Controller
         
     }
 
-    /**
-     * show the post seit
-     * 
-     * @param ind $PostID
-     * 
-     */
     public function showPost()
     {   
         $PostID = intval($_GET['id']);
-        
-        if (isset($_POST['comment'])) {
-            
-            if (isset($_SESSION['editComment'])) {
-                $CommentID = intval($_SESSION['editComment']);
-                $comment = trim($_POST['comment']);
-                
-                $this->dbContainer->updateComment($CommentID, $comment);
-                unset($_SESSION['editComment']);
-            } else {
-                $comment = $_POST['comment'];
-                $this->dbContainer->insertComment($PostID, $comment);
-            }        
-        }
-        
-        $comment = "";
-        if (isset($_POST['edit'])) {
-            $CommentID = $_POST['edit'];
-            $_SESSION['editComment'] = $CommentID;
-            $comment = $this->dbContainer->commentByID($CommentID);
-        }
         
         $post = $this->dbContainer->getPost('artikels', $PostID);
         $comments = $this->dbContainer->commentsByPost($PostID);        
         
         return view('post', [
             'post' => $post, 
-            'comments' => $comments,
-            'commentEdit' => $comment
+            'comments' => $comments            
             ]);
     }
 
@@ -79,13 +58,6 @@ class PostController extends Controller
         $artikeln = $this->dbContainer->getAll('artikels');
         
         return view('index', ['artikeln' => $artikeln]);
-    }
-
-    public function filterArtikel()
-    {
-        $filter = ['test'];
-        
-        return view('index', ['filter' => $filter]);
     }
 
 }
