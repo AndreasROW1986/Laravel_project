@@ -20,11 +20,11 @@ class PostController extends Controller
     public function __construct(BlogDB $container) //Fixer $fixerController)
     {
         $this->dbContainer = $container;
-        //$this->fixerController = $fixerController;
+        //$this->fixerController = $fixerController; test2
     }
     
     public function index()
-    {
+    {            
         $defCrn = 'USD';
         
         $artikeln = $this->dbContainer->getTopArtikels();
