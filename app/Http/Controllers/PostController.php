@@ -20,7 +20,7 @@ class PostController extends Controller
     public function __construct(BlogDB $container) //Fixer $fixerController)
     {
         $this->dbContainer = $container;
-        //$this->fixerController = $fixerController; test2
+        //$this->fixerController = $fixerController; test
     }
     
     public function index()
